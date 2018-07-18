@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1>Weather</h1>
+
+    <form>
+      <p>City:
+        <select [(ngModel)]="selectedValue" (change)="change($event.target.value)">>
+          <option *ngFor="let c of cities" [ngValue]="c.id">{{c.name}}</option>
+        </select>
+      </p>
+     </form>
+
+     <br>
+     <br>
+     <div *ngIf="weather">
+       <h2>Data from OpenWeather API</h2>
+
+       <p>
+         <label>Weather:</label>
+         {{weather.weather[0].main}}
+       </p>
+       <p>
+         <label>Weather description:</label>
+         {{weather.weather[0].description}}
+       </p>
+       <p>
+         <label>Country:</label>
+         {{weather.sys.country}}
+         <label>City:</label>
+         {{weather.name}}
+       </p>
+       <p>
+         <label>Temperature:</label>
+         {{weather.main.temp}}°C
+       </p>
+       <p>
+         <label>Temperature max:</label>
+         {{weather.main.temp_max}}°C
+       </p>
+       <p>
+         <label>Temperature min:</label>
+         {{weather.main.temp_min}}°C
+       </p>
+       <p>
+         <label>Pressure:</label>
+         {{weather.main.pressure}}hpa
+       </p>
+       <p>
+         <label>Humidity:</label>
+         {{weather.main.humidity}}%
+       </p>
+    </div>
+  </div>
+</div>
